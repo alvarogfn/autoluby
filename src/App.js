@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { UserContext, UserStorage } from "./UserContext";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserStorage } from "./UserContext";
 import Login from "./views/Login";
 import "./styles.css";
 
