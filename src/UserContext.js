@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 export const UserContext = React.createContext();
 
@@ -10,14 +9,6 @@ export function UserStorage({ children }) {
   function handleSaveToken() {
     setSaveToken((token) => !token);
   }
-
-  const navigate = useNavigate();
-
-  React.useEffect(() => {
-    if (!isAuth) {
-      navigate("/login");
-    }
-  }, [navigate, isAuth]);
 
   const state = {
     isAuth,
