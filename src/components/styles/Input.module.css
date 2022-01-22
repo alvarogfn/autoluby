@@ -50,6 +50,7 @@
 .isInvalid .input:not(:focus) {
   border-color: var(--orange);
   color: var(--orange);
+  font-weight: bold;
 
   background-image: url("../../assets/input-x.svg");
 }

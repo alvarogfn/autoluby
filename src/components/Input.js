@@ -28,7 +28,7 @@ const Input = ({
           onBlur={onBlur}
           placeholder={placeholder}
           onChange={({ target }) => onChange(target.value)}
-          title={error}
+          title={error ? error : undefined}
         />
       </label>
     </div>
