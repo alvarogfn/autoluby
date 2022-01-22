@@ -1,0 +1,12 @@
+:root {
+  --dark-gray: rgba(60, 60, 60, 1);
+  --light-gray: rgba(162, 162, 162, 1);
+  --deep-orange: rgba(245, 74, 72, 1);
+  --orange: rgba(250, 152, 47, 1);
+  --white: rgba(255, 255, 255, 1);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}

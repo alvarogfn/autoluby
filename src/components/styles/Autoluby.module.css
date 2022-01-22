@@ -1,0 +1,10 @@
+.icon {
+  display: flex;
+  column-gap: 15px;
+  width: max-content;
+}
+
+.h1 {
+  font-family: Poppins, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--deep-orange);
+}
