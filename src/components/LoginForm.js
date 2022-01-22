@@ -9,6 +9,9 @@ const LoginForm = () => {
 
   function onSubmit(e) {
     e.preventDefault();
+    if (!email.error && !password.error) {
+      console.log("oi");
+    }
   }
 
   return (

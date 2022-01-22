@@ -41,7 +41,6 @@
 
 .isValid .input:not(:placeholder-shown):not(:focus) {
   border-color: var(--green);
-  color: var(--green);
 
   background-image: url("../../assets/input-v.svg");
 }
