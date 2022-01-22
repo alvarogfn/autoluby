@@ -1,25 +1,33 @@
 .main {
+  display: grid;
+}
+
+.background {
+  position: fixed;
   width: 100vw;
   height: 100vh;
-  max-width: 100%;
-  max-height: 100%;
-  min-height: 500px;
-
-  background-image: url("../../assets/wallpaper-login.avif");
+  z-index: -1;
+  background-image: url("../../assets/wallpaper-login.jpg");
+  background-position: center center;
   background-repeat: no-repeat;
-  background-position: right;
   background-size: cover;
-  background-attachment: fixed;
+  box-shadow: 0 0 0 100vw inset rgba(0, 0, 0, 0.5);
+}
 
-  position: relative;
+.content {
+  align-self: center;
+  justify-self: center;
+  min-height: 500px;
+  width: 100%;
 }
 
 .header {
-  padding: 1rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
 }
 
 .welcome {
-  margin-bottom: 25px;
+  margin-bottom: 60px;
   color: var(--dark-gray);
 }
 
@@ -33,57 +41,51 @@
 }
 
 .loginForm {
+  margin: 4rem auto 3rem;
   background-color: var(--white);
 
-  position: absolute;
-  transform: translate(-50%, -50%);
-
-  top: 50%;
-  left: 50%;
-
-  width: 70%;
-  max-width: 450px;
-  min-width: 375px;
-  height: max-content;
+  width: 95%;
+  min-width: 300px;
+  max-width: 420px;
 
   border-radius: 0.25rem;
   padding: 1.5rem;
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
 }
 
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width: 900px) {
   .main {
-    background-size: 50% 100%;
-    display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+  }
+
+  .content {
+    display: grid;
+    height: 100vh;
+    min-height: 500px;
     grid-template-rows: 100px 1fr;
-    column-gap: 10px;
   }
 
   .header {
-    padding: 2rem;
-  }
-
-  .welcome {
-    margin-bottom: 70px;
-  }
-
-  .welcomeMessage {
-    font-size: 2.375rem;
+    margin-top: 1vh;
+    margin-left: 3vw;
   }
 
   .loginForm {
-    grid-column: 1 / 2;
-
-    position: static;
-    transform: initial;
-    border-radius: none;
-    padding: 0;
-    box-shadow: initial;
-    min-width: initial;
-
-
+    margin: 0;
     align-self: center;
     justify-self: center;
+    border-radius: initial;
+    padding: 1rem;
+    box-shadow: initial;
+    width: 70%;
+    max-width: 525px;
+  }
+
+  .background {
+    right: 0;
+    position: fixed;
+    width: 50vw;
   }
 }

@@ -2,8 +2,10 @@
   display: flex;
   column-gap: 15px;
   width: max-content;
+  background-color: transparent;
 }
 
 .h1 {
   color: var(--red);
+  background-color: transparent;
 }
