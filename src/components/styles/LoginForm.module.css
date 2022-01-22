@@ -1,0 +1,54 @@
+.button {
+  color: var(--white);
+  background-color: var(--red);
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  transition: 200ms;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+}
+
+.button:active {
+  background-color: #DF3938;
+}
+
+.rememberPassword {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 32px 0 30px;
+  justify-content: space-between;
+  column-gap: 15px;
+  row-gap: 15px;
+  align-items: center;
+}
+
+.link {
+  font-size: 0.813rem;
+  color: var(--red);
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+}
+
+.createAccount {
+  color: var(--light-gray);
+  font-size: 0.813rem;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+
+@media screen and (min-width: 768px) {
+  .button:hover {
+    background-color: #DF3938;
+  }
+
+  .button:active {
+    border-color: #971212;
+  }
+}

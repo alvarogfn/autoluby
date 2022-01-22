@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 import useInput from "../hooks/useInput";
 import Input from "./Input";
+import Checkbox from "./Checkbox";
+import styles from "./styles/LoginForm.module.css";
 
 const LoginForm = () => {
   const email = useInput("email");
   const password = useInput("password");
+
+  const { saveToken, handleSaveToken } = React.useContext(UserContext);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -29,13 +34,22 @@ const LoginForm = () => {
         placeholder={"Senha"}
         {...password}
       />
-      <div>
-        <input type="checkbox" /> Lembrar minha Senha
+      <div className={styles.rememberPassword}>
+        <Checkbox
+          onChange={handleSaveToken}
+          value={saveToken}
+          label={"Lembrar minha senha"}
+          id={"rememberPassword"}
+        />
+        <Link className={styles.link} to="/lost-password">
+          Esqueceu a senha?
+        </Link>
       </div>
-      <Link to="/home">Esqueceu a senha?</Link>
-      <button type="submit">Entrar</button>
-      <p>
-        Ainda não tem uma conta? <Link to="/create-account">Criar Conta</Link>
+      <button className={styles.button} type="submit">
+        Entrar
+      </button>
+      <p className={styles.createAccount}>
+        Ainda não tem uma conta? <Link className={styles.link} to="/create-account">Criar Conta</Link>
       </p>
     </form>
   );
