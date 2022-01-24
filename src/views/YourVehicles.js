@@ -1,7 +1,13 @@
 import React from "react";
+import Header from "../components/Header";
 
 const YourVehicles = () => {
-  return <div>yourvehicles</div>;
+  return (
+    <>
+      <Header showSearchbar={false} />
+      <main></main>
+    </>
+  );
 };
 
 export default YourVehicles;
