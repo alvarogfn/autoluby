@@ -22,8 +22,10 @@ function useInput(type) {
     try {
       await yup.reach(schema, type).validate(value);
       setError(false);
+      return true;
     } catch (e) {
       setError(e.errors[0]);
+      return false;
     }
   }
 
@@ -31,8 +33,10 @@ function useInput(type) {
     value,
     setValue,
     onChange,
+    setError,
     error,
     onBlur: () => validate(value),
+    validate: () => validate(value),
   };
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import useInput from "../hooks/useInput";
 import Input from "./Input";
@@ -9,13 +9,22 @@ import styles from "./styles/LoginForm.module.css";
 const LoginForm = () => {
   const email = useInput("email");
   const password = useInput("password");
+  const navigate = useNavigate();
 
-  const { saveToken, handleSaveToken } = React.useContext(UserContext);
+  const { saveToken, handleSaveToken, login } = React.useContext(UserContext);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
-    if (!email.error && !password.error) {
-      console.log("oi");
+
+    const isValid = (await email.validate()) && (await password.validate());
+    if (isValid) {
+      const result = await login(email.value, password.value);
+      if (!result) {
+        email.setError("Email inválido");
+        password.setError("Senha inválida");
+      } else {
+        navigate("/");
+      }
     }
   }
 
@@ -25,6 +34,7 @@ const LoginForm = () => {
         label={"Endereço de email"}
         name={"password"}
         placeholder={"@mail.com"}
+        required
         {...email}
       />
       <Input
@@ -32,6 +42,7 @@ const LoginForm = () => {
         name={"password"}
         type={"password"}
         placeholder={"Senha"}
+        required
         {...password}
       />
       <div className={styles.rememberPassword}>
@@ -49,7 +60,10 @@ const LoginForm = () => {
         Entrar
       </button>
       <p className={styles.createAccount}>
-        Ainda não tem uma conta? <Link className={styles.link} to="/create-account">Criar Conta</Link>
+        Ainda não tem uma conta?{" "}
+        <Link className={styles.link} to="/create-account">
+          Criar Conta
+        </Link>
       </p>
     </form>
   );

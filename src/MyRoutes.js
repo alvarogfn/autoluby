@@ -16,7 +16,6 @@ const MyRoutes = () => {
         path="/login"
         element={!isAuth ? <Login /> : <Navigate to="/" />}
       />
-
       <Route path="/" element={isAuth ? <Home /> : <Navigate to="/login" />} />
 
       <Route

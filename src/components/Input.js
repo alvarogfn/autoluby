@@ -10,6 +10,7 @@ const Input = ({
   onBlur,
   value,
   error,
+  required,
 }) => {
   return (
     <div
@@ -29,6 +30,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={({ target }) => onChange(target.value)}
           title={error ? error : undefined}
+          required={required}
         />
       </label>
     </div>
