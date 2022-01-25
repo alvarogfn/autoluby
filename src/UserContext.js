@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = React.createContext();
 
 export function UserStorage({ children }) {
-  const [isAuth, setAuth] = React.useState();
-  const [userData, setUserData] = React.useState(null);
+  const [isAuth, setAuth] = React.useState(true);
+  const [userData, setUserData] = React.useState(() => {
+    return JSON.parse(
+      '{"name":"Administrador","email":"admin@luby.com.br","cpf":"06365448180","salary":100000,"bio":"Vendedor oficial de veículos automotores","vehicles":[{"brand":"Volkswagen","model":"Gol","yer":"2004","km":150000,"color":"Vermelho","status":"Vendido","chassi":"KNDPBCA25B7076883","value":13000},{"brand":"Fiat","model":"Marea","yer":"1994","km":2400000,"color":"Prata","status":"Reservado","chassi":"3B7KF23Z91G223647","value":8000},{"brand":"KIA","model":"Sorento","yer":"2014","km":50000,"color":"preto","status":"Vendido","chassi":"5XYKUDA21DG367493","value":20000}],"totalEmployees":9,"totalVehicles":8,"totalVehiclesLoggedUser":3}'
+    );
+  });
   const [saveToken, setSaveToken] = React.useState(false);
   const [token, setToken] = React.useState();
   const navigate = useNavigate();
@@ -60,6 +64,7 @@ export function UserStorage({ children }) {
     login,
     logout,
     token,
+    userData,
   };
 
   return <UserContext.Provider value={state}>{children}</UserContext.Provider>;

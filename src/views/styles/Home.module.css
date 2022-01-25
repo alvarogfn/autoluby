@@ -1,6 +1,6 @@
 .main {
-  width: 90%;
-  margin: 0 auto;
+  width: calc(100% - 15vw);
+  margin: 2rem auto;
 }
 
 .welcome {
@@ -12,6 +12,16 @@
   color: #858585;
 }
 
-.options {
+.img {
+  margin: 0 auto;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 
+.options {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 30px;
 }
