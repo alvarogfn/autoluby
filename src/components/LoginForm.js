@@ -10,6 +10,7 @@ const LoginForm = () => {
   const email = useInput("email");
   const password = useInput("password");
   const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false);
 
   const { saveToken, handleSaveToken, login } = React.useContext(UserContext);
 
@@ -18,11 +19,14 @@ const LoginForm = () => {
 
     const isValid = (await email.validate()) && (await password.validate());
     if (isValid) {
+      setLoading(true);
       const result = await login(email.value, password.value);
       if (!result) {
         email.setError("Email inválido");
         password.setError("Senha inválida");
+        setLoading(false);
       } else {
+        setLoading(false);
         navigate("/");
       }
     }
@@ -56,7 +60,7 @@ const LoginForm = () => {
           Esqueceu a senha?
         </Link>
       </div>
-      <button className={styles.button} type="submit">
+      <button disabled={loading} className={styles.button} type="submit">
         Entrar
       </button>
       <p className={styles.createAccount}>
