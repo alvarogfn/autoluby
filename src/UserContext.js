@@ -23,9 +23,11 @@ export function UserStorage({ children }) {
     const jsonBody = await response.json();
     setToken(jsonBody.token);
     setUserData(Object.assign({}, jsonBody.user));
+    console.log(jsonBody);
     setPageData(
       Object.assign(
         {},
+        {name: jsonBody.user.name},
         { totalEmployees: jsonBody.totalEmployees },
         { totalVehicles: jsonBody.totalVehicles },
         { totalVehiclesLoggedUser: jsonBody.totalVehiclesLoggedUser }
