@@ -6,6 +6,7 @@ export const UserContext = React.createContext();
 export function UserStorage({ children }) {
   const [isAuth, setAuth] = React.useState(false);
   const [userData, setUserData] = React.useState();
+  const [pageData, setPageData] = React.useState();
   const [saveToken, setSaveToken] = React.useState(false);
   const [token, setToken] = React.useState();
   const navigate = useNavigate();
@@ -21,10 +22,10 @@ export function UserStorage({ children }) {
     if (response.status !== 200) return false;
     const jsonBody = await response.json();
     setToken(jsonBody.token);
-    setUserData(
+    setUserData(Object.assign({}, jsonBody.user));
+    setPageData(
       Object.assign(
         {},
-        jsonBody.user,
         { totalEmployees: jsonBody.totalEmployees },
         { totalVehicles: jsonBody.totalVehicles },
         { totalVehiclesLoggedUser: jsonBody.totalVehiclesLoggedUser }
@@ -61,6 +62,7 @@ export function UserStorage({ children }) {
     logout,
     token,
     userData,
+    pageData,
   };
 
   return <UserContext.Provider value={state}>{children}</UserContext.Provider>;

@@ -1,8 +1,18 @@
 import React from "react";
 import styles from "./styles/Table.module.css";
 import Searchbar from "../components/Searchbar";
+import Pagination from "./Pagination";
 
-const Table = ({ title, rows, data, centralize }) => {
+const Table = ({
+  title,
+  rows,
+  data,
+  centralize,
+  perPage,
+  currentPage,
+  totalRecords,
+  changePage,
+}) => {
   if (!data) return null;
   if (!rows) return null;
 
@@ -10,7 +20,13 @@ const Table = ({ title, rows, data, centralize }) => {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
-        <div>asasdasdasdsaasdsadd</div>
+        <Pagination
+          index={0}
+          perPage={perPage}
+          currentPage={currentPage}
+          totalRecords={totalRecords}
+          changePage={changePage}
+        />
         <Searchbar />
       </header>
       <table className={`${styles.table} ${centralize && styles.centralize}`}>

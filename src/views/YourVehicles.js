@@ -7,7 +7,7 @@ import styles from "./styles/Yourvehicles.module.css";
 
 const YourVehicles = () => {
   const { userData } = React.useContext(UserContext);
-  const [vehicles, setVehicles] = React.useState(userData.vehicles);
+  const [actualPage, setActualPage] = React.useState(1);
 
   return (
     <>
@@ -28,8 +28,10 @@ const YourVehicles = () => {
                 "chassi",
                 "valor",
               ]}
-              data={vehicles}
+              data={userData.vehicles}
               centralize={true}
+              changePage={setActualPage}
+              currentPage={actualPage}
             />
           }
         </section>

@@ -8,25 +8,26 @@ import styles from "./styles/AllVehicles.module.css";
 const AllVehicles = () => {
   const { token, logout } = React.useContext(UserContext);
   const [vehiclesData, setVehiclesData] = React.useState({});
-
-  const getVehiclesData = React.useCallback(async () => {
-    const response = await fetch("https://autoluby.dev.luby.com.br/vehicles", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-
-    if (response.status === 403) logout();
-    const responseBody = await response.json();
-    setVehiclesData(responseBody);
-  }, [token, logout, setVehiclesData]);
+  const [actualPage, setActualPage] = React.useState(1);
 
   React.useEffect(() => {
-    getVehiclesData();
-  }, [getVehiclesData]);
+    async function getData() {
+      const addr = new URL("https://autoluby.dev.luby.com.br/vehicles");
+      addr.searchParams.set("page", actualPage);
+      const response = await fetch(addr.href, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (response.status === 403) logout();
+      const jsonBody = await response.json();
+      setVehiclesData(jsonBody);
+    }
+    getData();
+  }, [actualPage, logout, setVehiclesData, token]);
 
   return (
     <>
@@ -49,6 +50,10 @@ const AllVehicles = () => {
                 "valor",
               ]}
               data={vehiclesData.vehicles}
+              currentPage={vehiclesData.currentPage}
+              perPage={vehiclesData.perPage}
+              totalRecords={vehiclesData.totalRecords}
+              changePage={setActualPage}
             />
           )}
         </section>

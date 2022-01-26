@@ -10,19 +10,19 @@ import vehicles from "../assets/vehicles.png";
 import Pagetitle from "../components/Pagetitle";
 
 const Home = () => {
-  const { userData } = React.useContext(UserContext);
+  const { pageData } = React.useContext(UserContext);
   return (
     <>
       <Header showSearchbar={true} />
       <main className={styles.main}>
         <Pagetitle className={styles.welcome}>
-          Bem-vindo, {userData.name}
+          Bem-vindo, {pageData.name}
         </Pagetitle>
         <p className={styles.menu}>Menu</p>
         <div className={styles.options}>
           <Homecard
             to="/seus-veiculos"
-            tot={userData.totalVehiclesLoggedUser + " veículos"}
+            tot={pageData.totalVehiclesLoggedUser + " veículos"}
             title={"Veículos reservados e vendidos"}
             subtitle={"Veículos reservados e vendidos por você"}
           >
@@ -30,7 +30,7 @@ const Home = () => {
           </Homecard>
           <Homecard
             to="/todos-veiculos"
-            tot={userData.totalVehicles + " veículos"}
+            tot={pageData.totalVehicles + " veículos"}
             title={"Listagem geral de veículos"}
             subtitle={"Listagem de veículos de toda a empresa"}
           >
@@ -42,7 +42,7 @@ const Home = () => {
           </Homecard>
           <Homecard
             to="/funcionarios"
-            tot={userData.totalEmployees + " funcionários"}
+            tot={pageData.totalEmployees + " funcionários"}
             title={"Funcionários da empresa"}
             subtitle={"Listagem de todos os funcionários da empresa"}
           >

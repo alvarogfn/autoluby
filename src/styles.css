@@ -37,3 +37,8 @@ img {
 table {
   border-collapse: collapse;
 }
+
+ul, li, ol {
+  display: flex;
+  list-style: none;
+}
