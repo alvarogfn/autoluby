@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  padding: 1rem;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+
+.thead {
+  background: #F9F9F9;
+  color: #858585;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 70px;
+  padding: 1rem;
+}
+
+.th {
+  padding: 0 0 0 1rem;
+}
+
+.td {
+  padding: 1rem;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #495057;
+
+  align-items: center;
+  letter-spacing: -0.02em;
+}
+
+.title {
+  font-size: 20px;
+  color: #495057;
+}

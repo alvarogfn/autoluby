@@ -7,6 +7,7 @@ import styles from "./styles/Home.module.css";
 import oneVehicle from "../assets/one-vehicle.png";
 import employer from "../assets/employer.png";
 import vehicles from "../assets/vehicles.png";
+import Pagetitle from "../components/Pagetitle";
 
 const Home = () => {
   const { userData } = React.useContext(UserContext);
@@ -14,7 +15,9 @@ const Home = () => {
     <>
       <Header showSearchbar={true} />
       <main className={styles.main}>
-        <h1 className={styles.welcome}>Bem-vindo, {userData.name}</h1>
+        <Pagetitle className={styles.welcome}>
+          Bem-vindo, {userData.name}
+        </Pagetitle>
         <p className={styles.menu}>Menu</p>
         <div className={styles.options}>
           <Homecard
@@ -31,7 +34,11 @@ const Home = () => {
             title={"Listagem geral de veículos"}
             subtitle={"Listagem de veículos de toda a empresa"}
           >
-            <img className={styles.img} src={vehicles} alt="Todos os veiculos" />
+            <img
+              className={styles.img}
+              src={vehicles}
+              alt="Todos os veiculos"
+            />
           </Homecard>
           <Homecard
             to="/funcionarios"
@@ -39,7 +46,11 @@ const Home = () => {
             title={"Funcionários da empresa"}
             subtitle={"Listagem de todos os funcionários da empresa"}
           >
-            <img className={styles.img} src={employer} alt="Seus funcionários" />
+            <img
+              className={styles.img}
+              src={employer}
+              alt="Seus funcionários"
+            />
           </Homecard>
         </div>
       </main>
