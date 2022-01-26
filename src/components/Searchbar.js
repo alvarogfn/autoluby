@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "./styles/Searchbar.module.css";
-const Searchbar = () => {
+const Searchbar = ({ value, onChange }) => {
   return (
     <div className={styles.container}>
-      <input className={styles.input} />
+      {value & onChange ? (
+        <input className={styles.input} value={value} onChange={onChange} />
+      ) : (
+        <input className={styles.input} />
+      )}
     </div>
   );
 };

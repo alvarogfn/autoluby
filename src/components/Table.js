@@ -28,11 +28,11 @@ const Table = ({ title, rows, data, centralize }) => {
         <tbody>
           {data.map((object, index) => {
             return (
-              <tr key={index + "asjdisafjdsdgh"}>
-                {Object.keys(object).map((td) => {
+              <tr key={index + "tableRow"}>
+                {Object.keys(object).map((td, index) => {
                   if (td === "salary" || td === "value") {
                     return (
-                      <td className={styles.td} key={object[td].name}>
+                      <td className={styles.td} key={index + "tableData"}>
                         {object[td].toLocaleString("pt-BR", {
                           style: "currency",
                           currency: "BRL",
@@ -41,7 +41,7 @@ const Table = ({ title, rows, data, centralize }) => {
                     );
                   } else if (td === "chassi") {
                     return (
-                      <td className={styles.td} key={object[td].name}>
+                      <td className={styles.td} key={index + "tableData"}>
                         {object[td].slice(0, 3)}
                       </td>
                     );
@@ -49,26 +49,27 @@ const Table = ({ title, rows, data, centralize }) => {
                     const value = object[td].toLowerCase();
                     if (value === "disponível") {
                       return (
-                        <td className={styles.td}>
+                        <td className={styles.td} key={index + "tableData"}>
                           <div className={styles.green}>{object[td]}</div>
                         </td>
                       );
                     } else if (value === "reservado") {
                       return (
-                        <td className={styles.td}>
+                        <td className={styles.td} key={index + "tableData"}>
                           <div className={styles.yellow}>{object[td]}</div>
                         </td>
                       );
                     } else if (value === "vendido") {
                       return (
-                        <td className={styles.td}>
+                        <td className={styles.td} key={index + "tableData"}>
                           <div className={styles.red}>{object[td]}</div>
                         </td>
                       );
-                    } else return <td>a</td>;
+                    } else
+                      return <td key={index + "tableData"}>{object[td]}</td>;
                   } else {
                     return (
-                      <td className={styles.td} key={object[td].name}>
+                      <td className={styles.td} key={index + "tableData"}>
                         {object[td].toString()}
                       </td>
                     );
