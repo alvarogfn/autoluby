@@ -36,7 +36,7 @@ const Employees = () => {
       <Header showSearchbar={false} />
       <main className={styles.main}>
         <Pagetitle>Funcionários</Pagetitle>
-        <section className={styles.card}>
+        <section>
           {employeesData && (
             <Table
               title="Listagem de funcionários da empresa"

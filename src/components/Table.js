@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./styles/Table.module.css";
 import Searchbar from "../components/Searchbar";
 
-const Table = ({ title, rows, data }) => {
-
+const Table = ({ title, rows, data, centralize }) => {
   if (!data) return null;
   if (!rows) return null;
 
@@ -14,7 +13,7 @@ const Table = ({ title, rows, data }) => {
         <div>asasdasdasdsaasdsadd</div>
         <Searchbar />
       </header>
-      <table className={styles.table}>
+      <table className={`${styles.table} ${centralize && styles.centralize}`}>
         <thead className={styles.thead}>
           <tr>
             {rows.map((label) => {
@@ -31,7 +30,7 @@ const Table = ({ title, rows, data }) => {
             return (
               <tr key={index + "asjdisafjdsdgh"}>
                 {Object.keys(object).map((td) => {
-                  if (td === "salary")
+                  if (td === "salary" || td === "value") {
                     return (
                       <td className={styles.td} key={object[td].name}>
                         {object[td].toLocaleString("pt-BR", {
@@ -40,12 +39,40 @@ const Table = ({ title, rows, data }) => {
                         })}
                       </td>
                     );
-                  else
+                  } else if (td === "chassi") {
+                    return (
+                      <td className={styles.td} key={object[td].name}>
+                        {object[td].slice(0, 3)}
+                      </td>
+                    );
+                  } else if (td === "status") {
+                    const value = object[td].toLowerCase();
+                    if (value === "disponível") {
+                      return (
+                        <td className={styles.td}>
+                          <div className={styles.green}>{object[td]}</div>
+                        </td>
+                      );
+                    } else if (value === "reservado") {
+                      return (
+                        <td className={styles.td}>
+                          <div className={styles.yellow}>{object[td]}</div>
+                        </td>
+                      );
+                    } else if (value === "vendido") {
+                      return (
+                        <td className={styles.td}>
+                          <div className={styles.red}>{object[td]}</div>
+                        </td>
+                      );
+                    } else return <td>a</td>;
+                  } else {
                     return (
                       <td className={styles.td} key={object[td].name}>
                         {object[td].toString()}
                       </td>
                     );
+                  }
                 })}
               </tr>
             );
