@@ -27,7 +27,7 @@ export function UserStorage({ children }) {
     setPageData(
       Object.assign(
         {},
-        {name: jsonBody.user.name},
+        { name: jsonBody.user.name },
         { totalEmployees: jsonBody.totalEmployees },
         { totalVehicles: jsonBody.totalVehicles },
         { totalVehiclesLoggedUser: jsonBody.totalVehiclesLoggedUser }
