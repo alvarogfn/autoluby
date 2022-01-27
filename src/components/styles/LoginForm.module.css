@@ -1,6 +1,6 @@
 .button {
-  color: var(--white);
-  background-color: var(--red);
+  color: white;
+  background-color: #f54a48;
   width: 100%;
   padding: 8px;
   border-radius: 6px;
@@ -31,17 +31,17 @@
 
 .link {
   font-size: 0.813rem;
-  color: var(--red);
+  color: #f54a48;
   font-weight: 500;
 }
 
 .link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration-color: #f54a48;
 }
 
 .createAccount {
-  color: var(--light-gray);
+  color: #a2a2a2;
   font-size: 0.813rem;
   margin-top: 30px;
   font-weight: 500;

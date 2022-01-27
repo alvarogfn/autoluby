@@ -28,7 +28,7 @@
 
 .welcome {
   margin-bottom: 60px;
-  color: var(--dark-gray);
+  color: #3c3c3c
 }
 
 .welcomeMessage {
@@ -37,12 +37,12 @@
 
 .paragraphMessage {
   font-size: 0.75rem;
-  color: var(--light-gray);
+  color: #a2a2a2;
 }
 
 .loginForm {
   margin: 4rem auto 3rem;
-  background-color: var(--white);
+  background-color: white;
 
   width: 95%;
   min-width: 300px;

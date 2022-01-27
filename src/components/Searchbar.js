@@ -1,18 +1,21 @@
 import React from "react";
 import styles from "./styles/Searchbar.module.css";
 const Searchbar = ({ setSearch }) => {
-  // const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState("");
+
+  function search(e) {
+    e.preventDefault();
+    if (setSearch) setSearch(value);
+  }
 
   return (
-    <div>
-      {/* <input
+    <form onSubmit={(e) => search(e)}>
+      <input
         className={styles.input}
         value={value}
         onChange={({ target }) => setValue(target.value)}
-        onBlur={() => setSearch(value)}
-      /> */}
-      <input className={styles.input} />
-    </div>
+      />
+    </form>
   );
 };
 

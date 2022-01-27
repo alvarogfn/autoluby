@@ -6,14 +6,14 @@
 
 .button {
   font-weight: 600;
-  color: var(--white);
+  color: white;
 
   height: 38px;
   width: 78px;
 
   padding-right: 1rem;
 
-  background-color: var(--red);
+  background-color: #f54a48;
   cursor: pointer;
   background-image: url("../../assets/logout.svg");
   background-repeat: no-repeat;

@@ -31,7 +31,7 @@
 .tot {
   padding: 1rem;
   justify-self: end;
-  color: var(--red);
+  color: #f54a48;
   text-transform: uppercase;
   font-weight: 600;
 }

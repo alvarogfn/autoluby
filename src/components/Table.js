@@ -30,7 +30,7 @@ const Table = ({
           />
         </div>
         <div className={styles.searchbar}>
-          <Searchbar onChange={searchBar} />
+          <Searchbar setSearch={searchBar} />
         </div>
       </header>
       <div className={styles.tableContainer}>
