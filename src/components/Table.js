@@ -12,8 +12,8 @@ const Table = ({
   currentPage,
   totalRecords,
   changePage,
+  searchBar,
 }) => {
-  if (!data) return null;
   if (!rows) return null;
 
   return (
@@ -30,7 +30,7 @@ const Table = ({
           />
         </div>
         <div className={styles.searchbar}>
-          <Searchbar />
+          <Searchbar onChange={searchBar} />
         </div>
       </header>
       <div className={styles.tableContainer}>
@@ -46,60 +46,64 @@ const Table = ({
               })}
             </tr>
           </thead>
-          <tbody>
-            {data.map((object, index) => {
-              return (
-                <tr key={index + "tableRow"}>
-                  {Object.keys(object).map((td, index) => {
-                    if (td === "salary" || td === "value") {
-                      return (
-                        <td className={styles.td} key={index + "tableData"}>
-                          {object[td].toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
-                        </td>
-                      );
-                    } else if (td === "chassi") {
-                      return (
-                        <td className={styles.td} key={index + "tableData"}>
-                          {object[td].slice(0, 3)}
-                        </td>
-                      );
-                    } else if (td === "status") {
-                      const value = object[td].toLowerCase();
-                      if (value === "disponível") {
+          {data && (
+            <tbody>
+              {data.map((object, index) => {
+                return (
+                  <tr key={index + "tableRow"}>
+                    {Object.keys(object).map((td, index) => {
+                      if (td === "salary" || td === "value") {
                         return (
                           <td className={styles.td} key={index + "tableData"}>
-                            <div className={styles.green}>{object[td]}</div>
+                            {object[td].toLocaleString("pt-BR", {
+                              style: "currency",
+                              currency: "BRL",
+                            })}
                           </td>
                         );
-                      } else if (value === "reservado") {
+                      } else if (td === "chassi") {
                         return (
                           <td className={styles.td} key={index + "tableData"}>
-                            <div className={styles.yellow}>{object[td]}</div>
+                            {object[td].slice(0, 3)}
                           </td>
                         );
-                      } else if (value === "vendido") {
+                      } else if (td === "status") {
+                        const value = object[td].toLowerCase();
+                        if (value === "disponível") {
+                          return (
+                            <td className={styles.td} key={index + "tableData"}>
+                              <div className={styles.green}>{object[td]}</div>
+                            </td>
+                          );
+                        } else if (value === "reservado") {
+                          return (
+                            <td className={styles.td} key={index + "tableData"}>
+                              <div className={styles.yellow}>{object[td]}</div>
+                            </td>
+                          );
+                        } else if (value === "vendido") {
+                          return (
+                            <td className={styles.td} key={index + "tableData"}>
+                              <div className={styles.red}>{object[td]}</div>
+                            </td>
+                          );
+                        } else
+                          return (
+                            <td key={index + "tableData"}>{object[td]}</td>
+                          );
+                      } else {
                         return (
                           <td className={styles.td} key={index + "tableData"}>
-                            <div className={styles.red}>{object[td]}</div>
+                            {object[td].toString()}
                           </td>
                         );
-                      } else
-                        return <td key={index + "tableData"}>{object[td]}</td>;
-                    } else {
-                      return (
-                        <td className={styles.td} key={index + "tableData"}>
-                          {object[td].toString()}
-                        </td>
-                      );
-                    }
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
+                      }
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          )}
         </table>
       </div>
     </div>

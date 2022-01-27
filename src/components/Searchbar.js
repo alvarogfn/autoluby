@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./styles/Searchbar.module.css";
-const Searchbar = ({ value, onChange }) => {
+const Searchbar = ({ setSearch }) => {
+  // const [value, setValue] = React.useState("");
+
   return (
-    <div className={styles.container}>
-      {value & onChange ? (
-        <input className={styles.input} value={value} onChange={onChange} />
-      ) : (
-        <input className={styles.input} />
-      )}
+    <div>
+      {/* <input
+        className={styles.input}
+        value={value}
+        onChange={({ target }) => setValue(target.value)}
+        onBlur={() => setSearch(value)}
+      /> */}
+      <input className={styles.input} />
     </div>
   );
 };
